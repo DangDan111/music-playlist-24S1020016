@@ -1,6 +1,6 @@
 songs = [
-    {'Title': 'Hồng nhan', 'artist': 'Jack', 'duration': '2019'},
-    {'Title': 'Bạc Phận', 'artist': 'Jack', 'duration': '2019'}
+    {'Title': 'Hồng nhan', 'artist': 'Jack', 'duration': '300'},
+    {'Title': 'Bạc Phận', 'artist': 'Jack', 'duration': '400'}
 ]
 def add_song(title: str, artist: str, duration: int) -> dict:
     """
@@ -31,6 +31,13 @@ def add_song_cli():
         print(f"Đã thêm: {song['title']} - {song['artist']} ({song['duration']}s)")
     except Exception as e:
         print("Lỗi:", e)
+def view_playlist():
+    if not songs:
+        print("Playlist đang rỗng.")
+        return
+    print("\n--- DANH SÁCH PHÁT ---")
+    for i, s in enumerate(songs, start=1):
+        print(f"{i}. {s['Title']} - {s['artist']} ({s['duration']}s)")
 def main():
     while True:
         print("\n--- MUSIC PLAYLIST MANAGER ---")
@@ -41,6 +48,8 @@ def main():
         choice = input("Chọn chức năng: ")
         if choice == '1':
             add_song_cli()
+        elif choice == '2':
+            view_playlist()
         elif choice == '4':
             print("Kết thúc chương trình.")
             break
